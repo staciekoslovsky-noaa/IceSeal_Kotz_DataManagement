@@ -1,0 +1,15 @@
+select distinct image_name
+                                      from surv_polar_bear.tbl_images i
+                                      inner join surv_polar_bear.geo_images_meta m
+                                      using (flight, camera_view, dt)
+									  full join base.geo_alaska_dcw g
+									  ON ST_Intersects(g.geom,m.geom)
+WHERE 
+									  flight = 'fl07'
+                                      and camera_view = 'L'
+                                      --and ins_roll < 10
+                                      --and ins_roll > -10
+                                      --and ins_altitude > 250
+                                      --and ins_altitude < 400
+									  --and g.id IS  NULL
+                                      and type = 'IR Image'
