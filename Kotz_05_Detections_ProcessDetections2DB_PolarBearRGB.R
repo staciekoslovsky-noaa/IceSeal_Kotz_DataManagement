@@ -35,9 +35,9 @@ original_id$max <- ifelse(length(original_id) == 0, 0, original_id$max)
 fields <- max(count.fields(original_file, sep = ','))
 original <- read.csv(original_file, header = FALSE, stringsAsFactors = FALSE, skip = 2, col.names = paste("V", seq_len(fields)))
 if(fields == 11) {
-  colnames(original) <- c("detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_type", "type_score")
+  colnames(original) <- c("detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_type", "type_score")
 } else if (fields == 13) {
-  colnames(original) <- c("detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_type", "type_score", "detection_type_x1", "type_score_x1")
+  colnames(original) <- c("detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_type", "type_score", "detection_type_x1", "type_score_x1")
 }
 
 if("type_x1" %notin% names(original)){
@@ -54,7 +54,7 @@ original <- original %>%
   mutate(flight = flight) %>%
   mutate(camera_view = camera) %>%
   mutate(detection_id = paste("polar_bear", flight, camera, detection, sep = "_")) %>%
-  select("id", "detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_type", "type_score", "detection_type_x1", "type_score_x1", "flight", "camera_view", "detection_id", "detection_file")
+  select("id", "detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_type", "type_score", "detection_type_x1", "type_score_x1", "flight", "camera_view", "detection_id", "detection_file")
 
 rm(fields, original_id)
 
@@ -62,7 +62,7 @@ rm(fields, original_id)
 processed_id <- RPostgreSQL::dbGetQuery(con, "SELECT max(id) FROM surv_polar_bear.tbl_detections_processed_rgb")
 processed_id$max <- ifelse(length(processed_id) == 0, 0, processed_id$max)
 
-processed <- read.csv(processed_file, header = FALSE, stringsAsFactors = FALSE, col.names = c("detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_type", "type_score"))
+processed <- read.csv(processed_file, header = FALSE, stringsAsFactors = FALSE, col.names = c("detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_type", "type_score"))
 processed <- processed %>%
   mutate(image_name = sapply(strsplit(image_name, split= "\\/"), function(x) x[length(x)])) %>%
   mutate(id = 1:n() + processed_id$max) %>%
@@ -71,7 +71,7 @@ processed <- processed %>%
   mutate(reviewer = reviewer) %>%
   mutate(camera_view = camera) %>%
   mutate(detection_id = paste("polar_bear", flight, camera, detection, sep = "_")) %>%
-  select("id", "detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_type", "type_score", "flight", "camera_view", "detection_id", "reviewer", "detection_file")
+  select("id", "detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_type", "type_score", "flight", "camera_view", "detection_id", "reviewer", "detection_file")
 
 rm(processed_id)
 

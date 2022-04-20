@@ -33,7 +33,7 @@ original_id$max <- ifelse(length(original_id) == 0, 0, original_id$max)
 
 fields <- max(count.fields(original_file, sep = ','))
 original <- read.csv(original_file, header = FALSE, stringsAsFactors = FALSE, skip = 2, col.names = paste("V", seq_len(fields)))
-colnames(original) <- c("detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_proc", "type_score")
+colnames(original) <- c("detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_proc", "type_score")
 
 original <- original %>%
   mutate(image_name = sapply(strsplit(image_name, split= "\\/"), function(x) x[length(x)])) %>%
@@ -55,7 +55,7 @@ original <- original %>%
                                     ifelse(age_class_conf == "p", "probably",
                                            ifelse(age_class_conf == "l", "likely", age_class_conf)))) %>%
   mutate(detection_id = paste("manual_review", flight, camera, detection, sep = "_")) %>%
-  select("id", "detection", "image_name", "frame_number", "bound_left", "bound_bottom", "bound_right", "bound_top", "score", "length", "detection_type", "type_score", "detection_type_conf", "age_class", "age_class_conf", "flight", "camera_view", "detection_id", "detection_file")
+  select("id", "detection", "image_name", "frame_number", "bound_left", "bound_top", "bound_right", "bound_bottom", "score", "length", "detection_type", "type_score", "detection_type_conf", "age_class", "age_class_conf", "flight", "camera_view", "detection_id", "detection_file")
 
 rm(fields, original_id)
 
