@@ -44,9 +44,9 @@ for (i in 1:nrow(image_dir)){
   files <- list.files(image_dir$camera_dir[i], full.names = FALSE, recursive = FALSE)
   files <- data.frame(file = files[which(startsWith(files, "test_kotz") == TRUE)], stringsAsFactors = FALSE)
   files$dt <- str_extract(files$file, "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]_[0-9][0-9][0-9][0-9][0-9][0-9].[0-9][0-9][0-9][0-9][0-9][0-9]")
-  files$type <- ifelse(grepl("rgb", files$file) == TRUE, "RGB Image", 
-                             ifelse(grepl("ir", files$file) == TRUE, "IR Image",
-                                    ifelse(grepl("uv", files$file) == TRUE, "UV Image", 
+  files$type <- ifelse(grepl("rgb", files$file) == TRUE, "rgb_image", 
+                             ifelse(grepl("ir", files$file) == TRUE, "ir_image",
+                                    ifelse(grepl("uv", files$file) == TRUE, "uv_image", 
                                           ifelse(grepl("meta", files$file) == TRUE, "meta.json", "Unknown"))))
   
   images <- files[which(grepl("Image", files$type)), ]
