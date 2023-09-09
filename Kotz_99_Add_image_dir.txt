@@ -1,0 +1,9 @@
+UPDATE surv_test_kotz.tbl_images
+SET image_dir = CASE WHEN camera_view = 'C' THEN '\\akc0ss-n086\NMML_Polar_Imagery\Techniques_Test\KAMERA_InFlightSystem_2019\test_flights_2019\test_kotz_2019\' || flight || '\CENT' 
+				WHEN camera_view = 'L' THEN '\\akc0ss-n086\NMML_Polar_Imagery\Techniques_Test\KAMERA_InFlightSystem_2019\test_flights_2019\test_kotz_2019\' || flight || '\LEFT' 
+				WHEN camera_view = 'R' THEN '\\akc0ss-n086\NMML_Polar_Imagery\Techniques_Test\KAMERA_InFlightSystem_2019\test_flights_2019\test_kotz_2019\' || flight || '\RGHT' END;
+				
+UPDATE surv_polar_bear.tbl_images
+SET image_dir = CASE WHEN camera_view = 'C' THEN '\\akc0ss-n086\NMML_Polar_Imagery\Techniques_Test\KAMERA_InFlightSystem_2019\polar_bear_2019\' || flight || '\CENT' 
+				WHEN camera_view = 'L' THEN '\\akc0ss-n086\NMML_Polar_Imagery\Techniques_Test\KAMERA_InFlightSystem_2019\polar_bear_2019\' || flight || '\LEFT' 
+				WHEN camera_view = 'R' THEN '\\akc0ss-n086\NMML_Polar_Imagery\Techniques_Test\KAMERA_InFlightSystem_2019\polar_bear_2019\' || flight || '\RGHT' END;	
