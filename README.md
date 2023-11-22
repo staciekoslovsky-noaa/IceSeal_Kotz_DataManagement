@@ -4,14 +4,14 @@ This repository stores the code associated with managing data collected during t
 
 The data management processing code is as follows:
 * **Kotz_01_ProcessData2DB_polar_bear.R** - code to import image and associated metadata into the DB
-* **Kotz_01_ProcessData2DB_test_kotz.R** - code to 
+* **Kotz_01_ProcessData2DB_test_kotz.R** - code to import image and associated metadata into the DB
 * **Kotz_01_ProcessFootprints2DB_polar_bear.R** - code to import post-processing footprints into the DB
-* **Kotz_01_ProcessFootprints2DB_test_kotz.R** - code to 
+* **Kotz_01_ProcessFootprints2DB_test_kotz.R** - code to import post-processing footprints into the DB
 * **Kotz_02_CleanUpData.R** - code to clean up known issues in the test data
 * **Kotz_02_RenameFL4Cimages.R** - code to rename flight #4 images (due to issues during the original data collection)
 * **Kotz_03_DebayerRGB_C.py** - code to debayer the center camera RGB images
-* **Kotz_03_DebayerRGB_L.py** - code to 
-* **Kotz_03_DebayerRGB_R.py** - code to 
+* **Kotz_03_DebayerRGB_L.py** - code to debayer the left camera RGB images
+* **Kotz_03_DebayerRGB_R.py** - code to debayer the right camera RGB images
 * **Kotz_03_RemoveFirstRowIR.R** - code to remove the first line in the IR images (that was incorrectly collected)
 * **Kotz_04_Detections_FilterImagesOnLand.txt** - SQL code to filter images that fall on land
 * **Kotz_04_Detections_ManualImageList.R** - code to generate list of images to be manually reviewed
